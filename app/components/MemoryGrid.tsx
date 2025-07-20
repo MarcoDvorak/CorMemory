@@ -13,9 +13,12 @@ interface MemoryGridProps {
 export default function MemoryGrid({ selectedCollection }: MemoryGridProps) {
   const { memories } = useMemory()
   const [selectedMemory, setSelectedMemory] = useState<Memory | null>(null)
-  const filteredMemories = selectedCollection === 'All Memories'
+  const filteredMemories = !selectedCollection
     ? memories
-    : memories.filter(m => m.collection === selectedCollection)
+    : memories.filter(m =>
+        m.collection &&
+        decodeURIComponent(selectedCollection).toLowerCase() === m.collection.toLowerCase()
+      )
 
   return (
     <>
