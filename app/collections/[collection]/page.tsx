@@ -7,6 +7,7 @@ export default function CollectionDetailPage() {
   // Pass the collection name as selectedCollection to MemoryGrid
   return (
     <main className="min-h-screen bg-white">
+      <h1 className="text-2xl font-semibold mb-6 text-gray-900 capitalize">{decodeURIComponent(collection)}</h1>
       <MemoryGrid selectedCollection={collection} />
     </main>
   );
