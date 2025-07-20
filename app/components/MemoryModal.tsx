@@ -4,6 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Memory } from '../types/memory';
 import DOMPurify from 'dompurify';
+import { useMemory } from '../contexts/MemoryContext';
 
 interface MemoryModalProps {
   memory: Memory;
@@ -16,7 +17,14 @@ function escapeHtml(text: string): string {
 }
 
 export default function MemoryModal({ memory, onClose }: MemoryModalProps) {
-  const { coverPhoto, additionalPhotos, note, location, tags } = memory;
+  const { coverPhoto, additionalPhotos, note, location, tags, collection, id } = memory;
+  const { updateMemory } = useMemory();
+  const [selectedCollection, setSelectedCollection] = React.useState<'Beautiful Views' | 'Restaurants' | 'Cafes' | undefined>(collection);
+  const handleCollectionChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const newCollection = e.target.value as 'Beautiful Views' | 'Restaurants' | 'Cafes';
+    setSelectedCollection(e.target.value === '' ? undefined : newCollection);
+    updateMemory(id, { ...memory, collection: e.target.value === '' ? undefined : newCollection, updatedAt: new Date() });
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm" aria-modal="true" role="dialog">
@@ -100,6 +108,21 @@ export default function MemoryModal({ memory, onClose }: MemoryModalProps) {
                   Map preview coming soon
                 </div>
               </div>
+            </section>
+
+            {/* Collection select */}
+            <section aria-label="Memory collection">
+              <h3 className="text-sm font-medium text-gray-500 mb-2">Add to a collection</h3>
+              <select
+                value={selectedCollection || ''}
+                onChange={handleCollectionChange}
+                className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-200"
+              >
+                <option value="">No collection</option>
+                <option value="Beautiful Views">Beautiful Views</option>
+                <option value="Restaurants">Restaurants</option>
+                <option value="Cafes">Cafes</option>
+              </select>
             </section>
           </div>
         </div>
