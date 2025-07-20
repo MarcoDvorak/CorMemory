@@ -15,7 +15,8 @@ export const sampleMemories: Memory[] = [
       placeId: 'florence1'
     },
     createdAt: new Date('2024-01-01'),
-    updatedAt: new Date('2024-01-01')
+    updatedAt: new Date('2024-01-01'),
+    collection: 'Beautiful Views',
   },
   {
     id: '2',
@@ -31,7 +32,8 @@ export const sampleMemories: Memory[] = [
       placeId: 'zermatt1'
     },
     createdAt: new Date('2024-01-15'),
-    updatedAt: new Date('2024-01-15')
+    updatedAt: new Date('2024-01-15'),
+    collection: 'Beautiful Views',
   },
   {
     id: '3',
@@ -47,7 +49,8 @@ export const sampleMemories: Memory[] = [
       placeId: 'coffeelab1'
     },
     createdAt: new Date('2024-02-01'),
-    updatedAt: new Date('2024-02-01')
+    updatedAt: new Date('2024-02-01'),
+    collection: 'Cafes',
   },
   {
     id: '4',
@@ -63,7 +66,8 @@ export const sampleMemories: Memory[] = [
       placeId: 'yosemite1'
     },
     createdAt: new Date('2024-02-10'),
-    updatedAt: new Date('2024-02-10')
+    updatedAt: new Date('2024-02-10'),
+    collection: 'Beautiful Views',
   },
   {
     id: '5',
@@ -79,7 +83,8 @@ export const sampleMemories: Memory[] = [
       placeId: 'home1'
     },
     createdAt: new Date('2024-02-15'),
-    updatedAt: new Date('2024-02-15')
+    updatedAt: new Date('2024-02-15'),
+    collection: 'Restaurants',
   },
   {
     id: '6',
@@ -95,7 +100,8 @@ export const sampleMemories: Memory[] = [
       placeId: 'tulum1'
     },
     createdAt: new Date('2024-02-20'),
-    updatedAt: new Date('2024-02-20')
+    updatedAt: new Date('2024-02-20'),
+    collection: 'Beautiful Views',
   },
   {
     id: '7',
@@ -111,7 +117,8 @@ export const sampleMemories: Memory[] = [
       placeId: 'shibuya1'
     },
     createdAt: new Date('2024-02-25'),
-    updatedAt: new Date('2024-02-25')
+    updatedAt: new Date('2024-02-25'),
+    collection: 'Beautiful Views',
   },
   {
     id: '8',
@@ -127,7 +134,8 @@ export const sampleMemories: Memory[] = [
       placeId: 'kyoto1'
     },
     createdAt: new Date('2024-03-01'),
-    updatedAt: new Date('2024-03-01')
+    updatedAt: new Date('2024-03-01'),
+    collection: 'Restaurants',
   },
   {
     id: '9',
@@ -143,7 +151,8 @@ export const sampleMemories: Memory[] = [
       placeId: 'bluemountains1'
     },
     createdAt: new Date('2024-03-05'),
-    updatedAt: new Date('2024-03-05')
+    updatedAt: new Date('2024-03-05'),
+    collection: 'Beautiful Views',
   },
   {
     id: '10',
@@ -159,7 +168,8 @@ export const sampleMemories: Memory[] = [
       placeId: 'shakespeare1'
     },
     createdAt: new Date('2024-03-10'),
-    updatedAt: new Date('2024-03-10')
+    updatedAt: new Date('2024-03-10'),
+    collection: 'Cafes',
   },
   {
     id: '11',
@@ -175,7 +185,8 @@ export const sampleMemories: Memory[] = [
       placeId: 'shoreditch1'
     },
     createdAt: new Date('2024-03-15'),
-    updatedAt: new Date('2024-03-15')
+    updatedAt: new Date('2024-03-15'),
+    collection: 'Cafes',
   },
   {
     id: '12',
@@ -191,6 +202,7 @@ export const sampleMemories: Memory[] = [
       placeId: 'blackforest1'
     },
     createdAt: new Date('2024-03-20'),
-    updatedAt: new Date('2024-03-20')
-  }
+    updatedAt: new Date('2024-03-20'),
+    collection: 'Beautiful Views',
+  },
 ] 

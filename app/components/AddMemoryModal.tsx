@@ -40,6 +40,7 @@ export default function AddMemoryModal({ onClose }: AddMemoryModalProps) {
   const [currentTag, setCurrentTag] = useState('')
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [collection, setCollection] = useState<'Beautiful Views' | 'Restaurants' | 'Cafes' | ''>('');
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>, isCover: boolean) => {
     setError(null);
@@ -94,6 +95,7 @@ export default function AddMemoryModal({ onClose }: AddMemoryModalProps) {
       location,
       createdAt: new Date(),
       updatedAt: new Date(),
+      collection: collection || undefined,
     };
     addMemory(newMemory);
     setSubmitting(false);
@@ -265,6 +267,23 @@ export default function AddMemoryModal({ onClose }: AddMemoryModalProps) {
                 ))}
               </div>
             )}
+          </div>
+
+          {/* Collection */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Add to a collection
+            </label>
+            <select
+              value={collection}
+              onChange={e => setCollection(e.target.value as 'Beautiful Views' | 'Restaurants' | 'Cafes' | '')}
+              className="w-full rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            >
+              <option value="">No collection</option>
+              <option value="Beautiful Views">Beautiful Views</option>
+              <option value="Restaurants">Restaurants</option>
+              <option value="Cafes">Cafes</option>
+            </select>
           </div>
 
           {/* Location */}

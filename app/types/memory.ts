@@ -33,6 +33,8 @@ export interface Memory {
   tags: string[];
   /** Location where the memory was created */
   location: Location;
+  /** Optional collection this memory belongs to */
+  collection?: 'Beautiful Views' | 'Restaurants' | 'Cafes';
   /** When the memory was first created */
   createdAt: Date;
   /** When the memory was last modified */

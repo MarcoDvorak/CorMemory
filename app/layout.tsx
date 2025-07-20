@@ -2,6 +2,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { MemoryProvider } from './contexts/MemoryContext'
+import TopMenuBar from './components/TopMenuBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -22,6 +23,7 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body className={`${inter.className} h-full antialiased`}>
         <MemoryProvider>
+          <TopMenuBar />
           {children}
         </MemoryProvider>
       </body>
