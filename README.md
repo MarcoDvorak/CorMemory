@@ -19,9 +19,16 @@ For detailed documentation, please see the [docs](./docs) directory.
 - Next.js 14 (App Router)
 - TypeScript
 - Tailwind CSS
+- Supabase (Database & Authentication)
 - React Context for state management
 
 ## Getting Started
+
+### Prerequisites
+- Node.js 18+ and npm
+- A Supabase account (free tier available)
+
+### Setup
 
 1. Clone the repository:
 ```bash
@@ -34,12 +41,28 @@ cd CorMemory
 npm install
 ```
 
-3. Run the development server:
+3. Set up Supabase database:
+   - Follow the detailed guide in [SUPABASE_SETUP.md](./SUPABASE_SETUP.md)
+   - Create your Supabase project
+   - Run the database migrations
+   - Configure environment variables
+
+4. Run the development server:
 ```bash
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Database Setup
+
+This project uses Supabase for data persistence. See [SUPABASE_SETUP.md](./SUPABASE_SETUP.md) for complete setup instructions.
+
+**Quick setup:**
+1. Create a Supabase project
+2. Copy `.env.local.example` to `.env.local`
+3. Add your Supabase URL and API key
+4. Run the database migration in Supabase SQL Editor
 
 ## Development
 

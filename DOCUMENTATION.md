@@ -25,6 +25,7 @@ CorMemory/
   │   ├── components/
   │   │   ├── AddMemoryButton.tsx
   │   │   ├── AddMemoryModal.tsx
+  │   │   ├── LoadingSpinner.tsx
   │   │   ├── MemoryCard.tsx
   │   │   ├── MemoryGrid.tsx
   │   │   ├── MemoryModal.tsx
@@ -37,6 +38,15 @@ CorMemory/
   │   ├── globals.css
   │   ├── layout.tsx
   │   └── page.tsx
+  ├── lib/
+  │   ├── database.types.ts
+  │   ├── memory-utils.ts
+  │   ├── supabase.ts
+  │   └── test-db-connection.ts
+  ├── supabase/
+  │   ├── migrations/
+  │   │   └── 001_create_memories_table.sql
+  │   └── seed.sql
   └── [configuration files]
 ```
 
@@ -58,9 +68,11 @@ CorMemory/
 
 #### Memory Context
 - Central state management for memories
-- Provides CRUD operations for memories
+- Provides async CRUD operations with Supabase
 - Implements search and tag filtering
+- Handles loading and error states
 - Maintains memory data structure consistency
+- Real-time database synchronization
 
 ### Data Structure
 
@@ -94,7 +106,8 @@ interface Memory {
 - Next.js App Router structure
 - React with TypeScript
 - Tailwind CSS for styling
-- Supabase client (from lib/supabase.ts only)
+- Supabase for database and real-time features
+- PostgreSQL database with Row Level Security
 
 #### Design Patterns
 - Functional React components with hooks
@@ -175,13 +188,54 @@ interface Memory {
 - Optimized search indexing
 - Efficient state updates
 
+## Database Integration
+
+### Supabase Setup
+- PostgreSQL database with optimized schema
+- Row Level Security (RLS) enabled
+- Automatic timestamps with triggers
+- Indexed columns for performance
+- JSONB support for additional photos
+
+### Database Schema
+```sql
+CREATE TABLE memories (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  cover_photo_url TEXT NOT NULL,
+  cover_photo_aspect_ratio DECIMAL(5,4) NOT NULL,
+  additional_photos JSONB DEFAULT NULL,
+  note TEXT DEFAULT NULL,
+  tags TEXT[] NOT NULL DEFAULT '{}',
+  location_name TEXT NOT NULL,
+  location_lat DECIMAL(10,8) NOT NULL,
+  location_lng DECIMAL(11,8) NOT NULL,
+  location_place_id TEXT NOT NULL,
+  collection TEXT DEFAULT NULL,
+  created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
+  updated_at TIMESTAMPTZ DEFAULT NOW() NOT NULL
+);
+```
+
+### Data Conversion
+- Utility functions convert between database rows and Memory objects
+- Type-safe operations with TypeScript
+- Proper handling of optional fields and arrays
+- Automatic timestamp management
+
 ## Development Guidelines
 
 ### Getting Started
 1. Clone the repository
 2. Install dependencies: `npm install`
-3. Set up environment variables
-4. Run development server: `npm run dev`
+3. Set up Supabase database (see SUPABASE_SETUP.md)
+4. Configure environment variables
+5. Run database migrations
+6. Run development server: `npm run dev`
+
+### Database Testing
+- Use `lib/test-db-connection.ts` to verify setup
+- Run in browser console: `testDatabaseConnection()`
+- Comprehensive connection and functionality tests
 
 ### Code Contribution
 - Follow existing code style
